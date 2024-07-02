@@ -12,7 +12,7 @@ import { EditCategoryComponent } from './features/category/edit-category/edit-ca
 import { LoginComponent } from './features/category/auth/login/login.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
-import { MarkdownModule } from 'ngx-markdown';
+
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 @NgModule({
   declarations: [
@@ -28,8 +28,7 @@ import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    MarkdownModule
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
