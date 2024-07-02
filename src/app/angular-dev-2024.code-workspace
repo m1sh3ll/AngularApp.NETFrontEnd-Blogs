@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../myPortfolio-2024-new"
+		},
+		{
+			"path": "C:/temp"
+		},
+		{
+			"path": "../../../../javascript-dev"
+		},
+		{
+			"path": "C:/Users/michelle/Local Sites"
+		},
+		{
+			"path": "../../../../myPortfolio-ftpzero"
+		},
+		{
+			"path": "../../../../react-dev/Learn-React"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "myPortfolio-2024-new"
+	}
+}
