@@ -26,7 +26,16 @@ const routes: Routes = [
   },
   {
     path: 'admin/categories/:id',
-    component: EditCategoryComponent  }
+    component: EditCategoryComponent  
+  },
+  {
+    path: 'admin/blogposts',
+    component: BlogpostListComponent  
+  }
+
+
+
+
 ];
 
 @NgModule({

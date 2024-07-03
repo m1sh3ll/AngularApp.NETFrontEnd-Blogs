@@ -13,18 +13,17 @@
           <li class="nav-item">
             <a class="nav-link active" style="color:white;" aria-current="page" href="#">Home</a>
           </li>
-
+         
           <ng-container *ngIf="user && user !== undefined && user.role.includes('admin')">
 
             <li class="nav-item">
-              <a class="nav-link active" style="color:white;"  routerLink="admin/categories">Categories</a>
-            </li>
+              <a class="nav-link active" style="color:white;"  routerLink="admin/categories">Category Manager</a>
+            </li>     
             <li class="nav-item">
-              <a class="nav-link active" style="color:white;"  routerLink="admin/blogposts">Blogs</a>
-            </li>
+              <a class="nav-link active" style="color:white;"  routerLink="admin/blogposts">Blog Post Manager</a>
+            </li>      
 
             <li> <button class="btn btn-primary ms-3" style="color:white;" (click)="onLogout()">Logout</button></li>
-
 
           </ng-container>
 
