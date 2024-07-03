@@ -6,6 +6,7 @@ import { EditCategoryComponent } from './features/category/edit-category/edit-ca
 import { LoginComponent } from './features/category/auth/login/login.component';
 import { compileClassMetadata } from '@angular/compiler';
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
+import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 
 
 
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'admin/blogposts',
     component: BlogpostListComponent  
+  },
+  {
+    path: 'admin/blogposts/add',
+    component: AddBlogpostComponent  
   }
 
 

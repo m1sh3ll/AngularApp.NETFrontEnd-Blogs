@@ -14,6 +14,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
 
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
+import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpo
     AddCategoryComponent,
     EditCategoryComponent,
     LoginComponent,    
-    ImageSelectorComponent, BlogpostListComponent
+    ImageSelectorComponent, BlogpostListComponent, AddBlogpostComponent
   ],
   imports: [
     BrowserModule,
