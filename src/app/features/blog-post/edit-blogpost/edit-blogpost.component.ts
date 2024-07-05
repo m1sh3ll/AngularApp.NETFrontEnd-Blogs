@@ -1,0 +1,104 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { BlogPostService } from '../services/blog-post.service';
+import { BlogPost } from '../models/blog-post.model';
+import { UpdateBlogPost } from '../models/update-blog-post.mode';
+import { CategoryService } from '../../category/services/category.service';
+import { Category } from '../../category/models/category.model';
+
+@Component({
+  selector: 'app-edit-blogpost',
+  templateUrl: './edit-blogpost.component.html',
+  styleUrls: ['./edit-blogpost.component.css']
+})
+
+
+
+export class EditBlogpostComponent implements OnInit, OnDestroy {
+
+  id: string | null = null;
+  paramsSubscription?: Subscription;
+  getBlogPostSubscription?: Subscription;
+  editBlogPostSubscription?: Subscription;
+  model?: BlogPost;
+  categories$?: Observable<Category[]>;
+  selectedCategories?: string[];
+
+
+  constructor(
+    private blogPostService: BlogPostService,
+    private categoryService: CategoryService,
+    private route: ActivatedRoute,
+    private router: Router) {
+  };
+
+  ngOnInit(): void {
+    this.categories$ = this.categoryService.getAllCategories();
+
+    this.paramsSubscription = this.route.paramMap
+      .subscribe({
+        next: (params) => {
+          this.id = params.get('id');
+
+          if (this.id) {
+            //get the data from the API
+            this.getBlogPostSubscription = this.blogPostService.getBlogPostById(this.id)
+              .subscribe({
+                next: (response) => {
+                  this.model = response;
+                  this.selectedCategories = response.categories.map(x => x.id);
+                },
+                error: (error) => {
+                  console.log("An error occurred");
+                }
+              })
+          }
+          console.log("Get was successful!")
+        },
+        error: (error) => {
+          console.log("An error occurred")
+        }
+      });
+  }
+
+
+  onFormSubmit(): void {
+
+    //Convert this model to request object
+    if (this.model && this.id) {
+      var updateBlogPost: UpdateBlogPost = {
+        title: this.model.title,
+        shortDescription: this.model.shortDescription,
+        content: this.model.content,
+        featuredImageUrl: this.model.featuredImageUrl,
+        urlHandle: this.model.urlHandle,
+        publishedDate: this.model.publishedDate,
+        author: this.model.author,
+        isVisible: this.model.isVisible,
+        categories: this.selectedCategories ?? []
+      };
+
+      if (this.id) {
+        this.editBlogPostSubscription = this.blogPostService.updateBlogPost(this.id, updateBlogPost)
+          .subscribe({
+            next: (reponse) => {
+              this.router.navigateByUrl('/admin/blogposts')
+            }
+          })
+
+        
+      }
+
+    }
+  }
+
+
+
+  ngOnDestroy(): void {
+    this.paramsSubscription?.unsubscribe();
+    this.getBlogPostSubscription?.unsubscribe();
+    this.editBlogPostSubscription?.unsubscribe();
+  }
+
+}

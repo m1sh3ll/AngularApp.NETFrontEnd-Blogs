@@ -10,6 +10,9 @@ import { UpdateCategoryRequest } from '../models/update-category-request.model';
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.css']
 })
+
+
+
 export class EditCategoryComponent implements OnInit, OnDestroy {
 
   id: string | null = null;
@@ -51,6 +54,8 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
         }
       });
   }
+
+
   onFormSubmit() :void {
     const updateCategoryRequest: UpdateCategoryRequest = {
       name: this.category?.name ?? '',
@@ -58,7 +63,6 @@ export class EditCategoryComponent implements OnInit, OnDestroy {
     };
 
     //pass this object to service
-
     if (this.id) {
       this.editCategorySubscription = this.categoryService.updateCategory(this.id, updateCategoryRequest)
       .subscribe({
