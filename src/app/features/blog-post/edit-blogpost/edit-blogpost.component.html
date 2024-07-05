@@ -45,12 +45,14 @@
 
 
         <div class="mt-3">
-          <label for="featuredImageUrl" class="form-label">Image</label>
+          <label for="featuredImageUrl" class="form-label">Image
+            <button type="button" class="btn btn-light" (click)="openImageSelector()">Select Image</button>
+          </label>
           <ng-container *ngIf="model.featuredImageUrl !== ''">
             <div>
               <img [src]="model.featuredImageUrl" height="200" class="my-2">
             </div>
-          </ng-container>
+          </ng-container>          
           <input type="text" id="featuredImageUrl" name="featuredImageUrl" class="form-control"
             [(ngModel)]="model.featuredImageUrl">
         </div>
@@ -97,7 +99,8 @@
     <div class="alert alert-warning" role="alert">Blog Post not found</div>
   </ng-template>
 </div>
-<div class="images-container-modal">
+<div class="images-container-modal" [ngClass]="{'d-block':isImageSelectorVisible, 'd-none': ! isImageSelectorVisible}">
+  <button type="button btn-light" style="position:fixed; top:10px; right: 10px;" (click)="closeImageSelector()"></button>
   <app-image-selector></app-image-selector>
 </div>
 <br><br><br><br><br><br>

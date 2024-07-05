@@ -15,7 +15,7 @@ export class ImageSelectorComponent implements OnInit {
   title: string = '';
   images$?: Observable<BlogImage[]>;
 
-  @ViewChild('form', { static: false}) imageUploadForm?: NgForm;
+  @ViewChild('form', { static: false }) imageUploadForm?: NgForm;
 
   constructor(private imageService: ImageService) {
 
@@ -33,12 +33,12 @@ export class ImageSelectorComponent implements OnInit {
     if (this.file && this.fileName !== '' && this.title !== '') {
       // Image service to upload the image
       this.imageService.uploadImage(this.file, this.fileName, this.title)
-      .subscribe({
-        next: (response) => {
-          this.imageUploadForm?.resetForm();
-          this.getImages();
-        }
-      });
+        .subscribe({
+          next: (response) => {
+            this.imageUploadForm?.resetForm();
+            this.getImages();
+          }
+        });
     }
   }
 
