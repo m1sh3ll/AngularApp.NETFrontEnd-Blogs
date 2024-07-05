@@ -29,4 +29,10 @@ export class BlogPostService {
       updateBlogPost     
     );
   }
+
+  deleteBlogPost(id: string): Observable<BlogPost> {
+    return this.http.delete<BlogPost>(`https://michellenesbitt.com/api/blogposts/${id}?addAuth=true`      
+    );
+  }
+
 }
