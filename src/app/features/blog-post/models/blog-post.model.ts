@@ -1,5 +1,3 @@
-import { Category } from "src/app/features/category/models/category.model";
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -7,7 +5,7 @@ export interface BlogPost {
   content: string;
   featuredImageUrl: string;
   urlHandle: string;
-  author: string;
   publishedDate: Date;
+  author: string; 
   isVisible: boolean;  
 }

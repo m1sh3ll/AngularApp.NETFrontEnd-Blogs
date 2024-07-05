@@ -15,7 +15,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-
   },
   {
     path: 'admin/categories',
@@ -37,10 +36,6 @@ const routes: Routes = [
     path: 'admin/blogposts/add',
     component: AddBlogpostComponent  
   }
-
-
-
-
 ];
 
 @NgModule({

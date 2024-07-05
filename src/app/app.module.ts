@@ -15,6 +15,7 @@ import { ImageSelectorComponent } from './shared/components/image-selector/image
 
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
+import { MarkdownModule } from 'ngx-markdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blog
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MarkdownModule.forRoot()
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

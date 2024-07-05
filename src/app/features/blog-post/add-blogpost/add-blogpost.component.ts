@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { AddBlogPost } from './models/add-blog-post.model';
+import { AddBlogPost } from '../models/add-blog-post.model';
+import { BlogPostService } from '../services/blog-post.service';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-blogpost',
@@ -8,22 +11,34 @@ import { AddBlogPost } from './models/add-blog-post.model';
 })
 export class AddBlogpostComponent {
   model: AddBlogPost;
+  private addBlogPostSubscription?: Subscription;
 
-  constructor() {
+  constructor(private blogPostService: BlogPostService,
+    private router: Router) 
+    {
     this.model = {
       title: '',
-      shortDescription: '',
-      urlHandle: '',
+      shortDescription: '',      
       content: '',
       featuredImageUrl: '',
-      author: '',
-      isVisible: true,
-      publishedDate: new Date()
+      urlHandle: '',
+      publishedDate: new Date(),
+      author: '',   
+      isVisible: true
     }
   } //end constructor
 
-  onFormSumit(): void {
+  onFormSubmit(): void {
+    this.addBlogPostSubscription = this.blogPostService.createBlogPost(this.model).subscribe({
+      next: (response) =>{
+        this.router.navigateByUrl('/');
+      }
+    })
+    console.log(this.model);
+  }
 
+  ngOnDestroy(): void {
+    this.addBlogPostSubscription?.unsubscribe();
   }
   
 }
