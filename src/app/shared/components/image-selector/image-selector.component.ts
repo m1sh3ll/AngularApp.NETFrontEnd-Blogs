@@ -10,6 +10,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./image-selector.component.css']
 })
 export class ImageSelectorComponent implements OnInit {
+
+  //variables
   private file?: File;
   fileName: string = '';
   title: string = '';
@@ -17,9 +19,10 @@ export class ImageSelectorComponent implements OnInit {
 
   @ViewChild('form', { static: false }) imageUploadForm?: NgForm;
 
-  constructor(private imageService: ImageService) {
-
+  constructor(private imageService: ImageService) 
+  {
   }
+
   ngOnInit(): void {
     this.getImages();
   }
@@ -31,7 +34,7 @@ export class ImageSelectorComponent implements OnInit {
 
   uploadImage(): void {
     if (this.file && this.fileName !== '' && this.title !== '') {
-      // Image service to upload the image
+      // Image service to upload image
       this.imageService.uploadImage(this.file, this.fileName, this.title)
         .subscribe({
           next: (response) => {

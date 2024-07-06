@@ -6,6 +6,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { UpdateBlogPost } from '../models/update-blog-post.mode';
 import { CategoryService } from '../../category/services/category.service';
 import { Category } from '../../category/models/category.model';
+import { ImageService } from 'src/app/shared/services/image.service';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -22,15 +23,17 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   getBlogPostSubscription?: Subscription;
   editBlogPostSubscription?: Subscription;
   deleteBlogPostSubscription?: Subscription;
+  imageSelectSubscription?: Subscription;
   model?: BlogPost;
   categories$?: Observable<Category[]>;
   selectedCategories?: string[];
-  isImageSelectorVisible : boolean = false;
+  isImageSelectorVisible: boolean = false;
 
 
   constructor(
     private blogPostService: BlogPostService,
     private categoryService: CategoryService,
+    private imageService: ImageService,
     private route: ActivatedRoute,
     private router: Router) {
   };
@@ -62,6 +65,18 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
           console.log("An error occurred")
         }
       });
+
+    this.imageSelectSubscription = this.imageService.onSelectImage()
+      .subscribe({
+        next: (response) => {
+          if (this.model) {
+            this.model.featuredImageUrl = response.url;
+            this.closeImageSelector();
+          }
+        }
+      })
+
+
   }
 
 
@@ -89,7 +104,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             }
           })
 
-        
+
       }
 
     }
@@ -97,19 +112,19 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   onDelete(): void {
     if (this.id) {
       this.deleteBlogPostSubscription = this.blogPostService.deleteBlogPost(this.id)
-      .subscribe({
-        next: (reponse) => {
-          this.router.navigateByUrl('/admin/blogposts');
-        }
-      })
+        .subscribe({
+          next: (reponse) => {
+            this.router.navigateByUrl('/admin/blogposts');
+          }
+        })
     }
   }
 
   openImageSelector(): void {
-this.isImageSelectorVisible = true;
+    this.isImageSelectorVisible = true;
   }
 
-  closeImageSelector() : void {
+  closeImageSelector(): void {
     this.isImageSelectorVisible = false;
   }
 
@@ -118,6 +133,7 @@ this.isImageSelectorVisible = true;
     this.getBlogPostSubscription?.unsubscribe();
     this.editBlogPostSubscription?.unsubscribe();
     this.deleteBlogPostSubscription?.unsubscribe();
+    this.imageSelectSubscription?.unsubscribe();
   }
 
 }

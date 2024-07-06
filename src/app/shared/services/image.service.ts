@@ -23,6 +23,7 @@ export class ImageService {
   }
 
 
+  //These local variables are exact case as the API variables
   uploadImage(file: File, fileName: string, title: string): Observable<BlogImage> {
     const formData = new FormData();
     formData.append('file', file);
@@ -33,11 +34,11 @@ export class ImageService {
   }
 
   selectImage(image: BlogImage): void {
-    this.selectedImage.next(image);
+    this.selectedImage.next(image); //emits the new value on select
   }
 
   onSelectImage(): Observable<BlogImage> {
-    return this.selectedImage.asObservable()
+    return this.selectedImage.asObservable(); //this is the method that other components will subscribe to in order to access the url in the parent component
   }
 
 }
