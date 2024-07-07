@@ -30,6 +30,9 @@ export class BlogPostService {
     );
   }
 
+  getBlogPostByUrlHandle(urlHandle: string): Observable<BlogPost> {
+    return this.http.get<BlogPost>(`https://michellenesbitt.com/api/blogposts/${urlHandle}`);
+  }
   deleteBlogPost(id: string): Observable<BlogPost> {
     return this.http.delete<BlogPost>(`https://michellenesbitt.com/api/blogposts/${id}?addAuth=true`      
     );

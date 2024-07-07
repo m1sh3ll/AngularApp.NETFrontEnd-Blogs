@@ -79,7 +79,7 @@ export class AddBlogpostComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.addBlogPostSubscription?.unsubscribe();
-    this.imageSelectSubscription?.unsubscribe():
+    this.imageSelectSubscription?.unsubscribe();
   }
 
 }

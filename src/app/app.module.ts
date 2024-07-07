@@ -17,6 +17,8 @@ import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpo
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
+import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,7 @@ import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-b
     AddCategoryComponent,
     EditCategoryComponent,
     LoginComponent,    
-    ImageSelectorComponent, BlogpostListComponent, AddBlogpostComponent, EditBlogpostComponent
+    ImageSelectorComponent, BlogpostListComponent, AddBlogpostComponent, EditBlogpostComponent, HomeComponent, BlogDetailsComponent
   ],
   imports: [
     BrowserModule,
