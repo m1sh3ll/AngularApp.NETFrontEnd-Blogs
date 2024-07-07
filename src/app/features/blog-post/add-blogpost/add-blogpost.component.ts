@@ -45,6 +45,7 @@ export class AddBlogpostComponent implements OnInit {
 
 
   ngOnInit(): void {
+   
     this.categories$ = this.categoryService.getAllCategories();
 
     this.imageSelectSubscription = this.imageService.onSelectImage()
