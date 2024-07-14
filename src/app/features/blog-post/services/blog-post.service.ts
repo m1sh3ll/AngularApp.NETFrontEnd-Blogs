@@ -13,28 +13,28 @@ export class BlogPostService {
   constructor(private http: HttpClient) { }
 
   createBlogPost(model: AddBlogPost): Observable<BlogPost> {
-    return this.http.post<BlogPost>(`https://michellenesbitt.com/api/blogposts?addAuth=true`, model);
+    return this.http.post<BlogPost>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts?addAuth=true`, model);
   }
 
   getAllBlogPosts() : Observable<BlogPost[]> {
-    return this.http.get<BlogPost[]>(`https://michellenesbitt.com/api/blogposts`);
+    return this.http.get<BlogPost[]>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts`);
   }
 
   getBlogPostById(id: string): Observable<BlogPost> {
-    return this.http.get<BlogPost>(`https://michellenesbitt.com/api/blogposts/${id}`);
+    return this.http.get<BlogPost>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts/${id}`);
   }
 
   updateBlogPost(id: string, updateBlogPost: UpdateBlogPost): Observable<BlogPost> {
-    return this.http.put<BlogPost>(`https://michellenesbitt.com/api/blogposts/${id}?addAuth=true`,
+    return this.http.put<BlogPost>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts/${id}?addAuth=true`,
       updateBlogPost     
     );
   }
 
   getBlogPostByUrlHandle(urlHandle: string): Observable<BlogPost> {
-    return this.http.get<BlogPost>(`https://michellenesbitt.com/api/blogposts/${urlHandle}`);
+    return this.http.get<BlogPost>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts/${urlHandle}`);
   }
   deleteBlogPost(id: string): Observable<BlogPost> {
-    return this.http.delete<BlogPost>(`https://michellenesbitt.com/api/blogposts/${id}?addAuth=true`      
+    return this.http.delete<BlogPost>(`https://nerdommicro-001-site1.ctempurl.com/api/blogposts/${id}?addAuth=true`      
     );
   }
 
