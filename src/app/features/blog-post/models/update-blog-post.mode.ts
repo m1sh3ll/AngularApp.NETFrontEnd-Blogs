@@ -1,4 +1,3 @@
-import { Category } from "../../category/models/category.model";
 
 export interface UpdateBlogPost {
   title: string;

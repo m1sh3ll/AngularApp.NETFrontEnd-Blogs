@@ -19,7 +19,7 @@ export class ImageService {
   constructor(private http: HttpClient) { }
 
   getAllImages(): Observable<BlogImage[]> {
-    return this.http.get<BlogImage[]>(`https://www.michellenesbitt.com/api/images`);
+    return this.http.get<BlogImage[]>(`http://nerdommicro-001-site1.ctempurl.com/api/images`);
   }
 
 
@@ -30,7 +30,7 @@ export class ImageService {
     formData.append('fileName', fileName);
     formData.append('title', title);
 
-    return this.http.post<BlogImage>(`https://www.michellenesbitt.com/api/images`, formData);
+    return this.http.post<BlogImage>(`http://nerdommicro-001-site1.ctempurl.com/api/images`, formData);
   }
 
   selectImage(image: BlogImage): void {

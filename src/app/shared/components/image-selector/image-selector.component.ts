@@ -23,7 +23,7 @@ export class ImageSelectorComponent implements OnInit {
   {
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.getImages();
   }
 

@@ -27,7 +27,12 @@ import { BlogDetailsComponent } from './features/public/blog-details/blog-detail
     AddCategoryComponent,
     EditCategoryComponent,
     LoginComponent,    
-    ImageSelectorComponent, BlogpostListComponent, AddBlogpostComponent, EditBlogpostComponent, HomeComponent, BlogDetailsComponent
+    ImageSelectorComponent, 
+    BlogpostListComponent, 
+    AddBlogpostComponent, 
+    EditBlogpostComponent, 
+    HomeComponent, 
+    BlogDetailsComponent
   ],
   imports: [
     BrowserModule,
