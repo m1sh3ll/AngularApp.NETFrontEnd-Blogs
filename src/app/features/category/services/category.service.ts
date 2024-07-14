@@ -17,28 +17,28 @@ export class CategoryService {
   }
 
   addCategory(model: AddCategoryRequest): Observable<void> {
-    return this.http.post<void>(`http://nerdommicro-001-site1.ctempurl.com/api/categories?addAuth=true`, model
+    return this.http.post<void>(`https://nerdommicro-001-site1.ctempurl.com/api/categories?addAuth=true`, model
     );
   }
 
   getAllCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`http://nerdommicro-001-site1.ctempurl.com/api/categories`);
+    return this.http.get<Category[]>(`https://nerdommicro-001-site1.ctempurl.com/api/categories`);
   }
 
   getCategoryById(id: string): Observable<Category> {
-    return this.http.get<Category>(`http://nerdommicro-001-site1.ctempurl.com/api/categories/${id}`);
+    return this.http.get<Category>(`https://nerdommicro-001-site1.ctempurl.com/api/categories/${id}`);
   }
 
  
 
   updateCategory(id: string, updateCategoryRequest: UpdateCategoryRequest): Observable<Category> {
-    return this.http.put<Category>(`http://nerdommicro-001-site1.ctempurl.com/api/categories/${id}?addAuth=true`,
+    return this.http.put<Category>(`https://nerdommicro-001-site1.ctempurl.com/api/categories/${id}?addAuth=true`,
       updateCategoryRequest
     );
   }
 
   deleteCategory(id: string): Observable<Category> {
-    return this.http.delete<Category>(`http://nerdommicro-001-site1.ctempurl.com/api/categories/${id}?addAuth=true`
+    return this.http.delete<Category>(`https://nerdommicro-001-site1.ctempurl.com/api/categories/${id}?addAuth=true`
     );
   }
 
