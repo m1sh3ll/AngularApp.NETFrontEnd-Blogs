@@ -37,11 +37,11 @@ export class CategoryListComponent implements OnInit {
   }
 
   onSearch(query: string) {
-    this.categories$ = this.categoryService.getAllCategories(query);
+    this.categories$ = this.categoryService.getAllCategories(query, "Name", "asc",this.pageNumber, this.pageSize);
   }
 
   sort(sortBy: string, sortDirection: string) {
-    this.categories$ = this.categoryService.getAllCategories(undefined, sortBy, sortDirection);
+    this.categories$ = this.categoryService.getAllCategories(undefined, sortBy, sortDirection,this.pageNumber, this.pageSize);
   }
 
   getPage(pageNumber: number) {
