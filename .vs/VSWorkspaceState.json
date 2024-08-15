@@ -12,6 +12,6 @@
     "\\src\\app\\features\\category\\category-list",
     "\\src\\app\\features\\category\\services"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\src\\app\\features\\category\\category-list\\category-list.component.ts",
   "PreviewInSolutionExplorer": false
 }

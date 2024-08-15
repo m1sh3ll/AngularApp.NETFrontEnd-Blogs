@@ -21,14 +21,29 @@ export class CategoryService {
     );
   }
 
-  getAllCategories(query?: string): Observable<Category[]> {
+  getAllCategories(query?: string,
+    sortBy?: string,
+    sortDirection?: string,
+    pageNumber?: number,
+    pageSize?: number ): Observable<Category[]> {
 
     let params = new HttpParams();
 
     if (query) {
       params = params.set('query', query)
     }
-
+    if (sortBy) {
+      params = params.set('sortBy', sortBy)
+    }
+    if (sortDirection) {
+      params = params.set('sortDirection', sortDirection)
+    }
+    if (pageNumber) {
+      params = params.set('pageNumber', pageNumber)
+    }
+    if (pageSize) {
+      params = params.set('pageSize', pageSize)
+    }
     return this.http.get<Category[]>(`https://nerdommicro-001-site1.ctempurl.com/api/categories`, {
       params: params
     });
@@ -38,7 +53,9 @@ export class CategoryService {
   getCategoryById(id: string): Observable<Category> {
     return this.http.get<Category>(`https://nerdommicro-001-site1.ctempurl.com/api/categories/${id}`);
   }
-
+  getCategoryCount(): Observable<number> {
+    return this.http.get<number>(`https://nerdommicro-001-site1.ctempurl.com/api/categories/count`);
+  }
  
 
   updateCategory(id: string, updateCategoryRequest: UpdateCategoryRequest): Observable<Category> {

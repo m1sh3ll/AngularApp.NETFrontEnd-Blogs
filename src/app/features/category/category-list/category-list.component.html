@@ -15,12 +15,41 @@
   </div>
 
   <ng-container *ngIf="categories$ | async as categories">
-    <table class="table table-bordered mt-3">
+    <table class="table-bordered mt-3 table">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th>URL Handle</th>
+          <th>
+            Name
+            <span>
+              <span>
+                <button type="button" class="btn btn-light" (click)="sort('name', 'asc')">
+                  <i class="bi bi-arrow-up"></i>
+                </button>
+              </span>
+              <span>
+                <button type="button" class="btn btn-light" (click)="sort('name', 'desc')">
+                  <i class="bi bi-arrow-down"></i>
+                </button>
+              </span>
+            </span>
+
+          </th>
+          <th>
+            URL Handle
+            <span>
+              <span>
+                <button type="button" class="btn btn-light" (click)="sort('url', 'asc')">
+                  <i class="bi bi-arrow-up"></i>
+                </button>
+              </span>
+              <span>
+                <button type="button" class="btn btn-light" (click)="sort('url', 'desc')">
+                  <i class="bi bi-arrow-down"></i>
+                </button>
+              </span>
+            </span>
+          </th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -35,6 +64,23 @@
         </tr>
       </tbody>
     </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" (click)="getPrevPage()" >Previous</a></li>
+
+
+        <li *ngFor="let item of list; let index = index" class="page-item">
+          <a class="page-link" (click)="getPage(index + 1)">
+            {{index+1}}
+          </a>
+        </li>
+
+
+
+        <li class="page-item"><a class="page-link" (click)="getNextPage()">Next</a></li>
+      </ul>
+    </nav>
 
   </ng-container>
 </div>
